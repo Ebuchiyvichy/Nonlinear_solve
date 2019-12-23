@@ -21,19 +21,26 @@ int	main()
 	std::cout << "Number of solv is " << l.nbr << std::endl;
 	
 	x = new double[l.nbr];
-
+	
 	for (int i = 0; i < l.nbr; i++)
-		x[i] = bisection(TEST, l, i);	//ошибается на 0,04
+		x[i] = Bisection(TEST, l, i);	//ошибается на 0,04
 	std::cout << "Bisection method:" << std::endl;
 	for (int i = 0; i < l.nbr; i++)
 		std::cout << "x" << i << " = " << x[i] << std::endl;
 
 	for (int i = 0; i < l.nbr; i++)
-		x[i] = Newton(TEST, l, i);		//ошибается в 4м корне
+		x[i] = Newton(TEST, l, i);		//ошибается в 4м корне в 1м тесте
 	std::cout << "Newton method:" << std::endl;
 	for (int i = 0; i < l.nbr; i++)
 		std::cout << "x" << i << " = " << x[i] << std::endl;
+	
+	for (int i = 0; i < l.nbr; i++)
+		x[i] = Hords(TEST, l, i);		//ошибается в 4м корне
+	std::cout << "Hords method:" << std::endl;
+	for (int i = 0; i < l.nbr; i++)
+		std::cout << "x" << i << " = " << x[i] << std::endl;
 
+	delete[] x;
 
 	system("pause");
 	return (0);
