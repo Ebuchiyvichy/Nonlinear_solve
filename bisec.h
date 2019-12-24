@@ -64,7 +64,7 @@ double	Hords(int func, local l, int n)
 	return (x1);
 }
 
-double	D(int func, int x)
+double	D(int func, double x)
 {
 	return (f(x + EPS, func) - f(x, func)) / EPS;
 }
@@ -82,7 +82,7 @@ double	Newton(int func, local l, int n)
 		x1 = x2;
 		if (D(func, x1) < EPS)
 		{
-			std::cout << "Trouble: ¯ \ _ (ツ) _ / ¯" << std::endl;
+			std::cout << "Trouble" << std::endl;
 			return (Hords(func, l, n));
 		}
 		x2 = x1 - f(x1, func) / D(func, x1);
