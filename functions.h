@@ -6,7 +6,7 @@
 
 double			EPS = 10.e-6;
 static int		HBISEC = 1;
-int				TEST = -1;
+int				TEST = 1;
 int	const		NBR = 2;
 
 typedef struct local

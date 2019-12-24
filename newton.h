@@ -14,6 +14,20 @@ double	D(int func, std::vector<double> x, int n, int m)
 	return (f(tmp, func)[n] - f(x, func)[n]) / EPS;
 }
 
+double	D_cen(int func, std::vector<double> x, int n, int m)
+{
+	std::vector<double>	tmp1(NBR);
+	std::vector<double>	tmp2(NBR);
+
+	for (int i = 0; i < NBR; i++)
+		tmp1[i] = x[i];
+	tmp1[m] = x[m] + EPS;
+	for (int i = 0; i < NBR; i++)
+		tmp2[i] = x[i];
+	tmp2[m] = x[m] - EPS;
+	return (f(tmp1, func)[n] - f(tmp2, func)[n]) / (2 * EPS);
+}
+
 Matrix	Jacoby_matr(int func, std::vector<double> x)
 {
 	Matrix Jac(NBR);

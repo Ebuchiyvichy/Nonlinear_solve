@@ -69,6 +69,11 @@ double	D(int func, double x)
 	return (f(x + EPS, func) - f(x, func)) / EPS;
 }
 
+double	D_cen(int func, double x)
+{
+	return (f(x + EPS, func) - f(x - EPS, func)) / (2 * EPS);
+}
+
 double	Newton(int func, local l, int n)
 {
 	double	x1, x2, a, b;
@@ -80,12 +85,12 @@ double	Newton(int func, local l, int n)
 	do
 	{
 		x1 = x2;
-		if (D(func, x1) < EPS)
+		if (D_cen(func, x1) < EPS)
 		{
 			std::cout << "Trouble" << std::endl;
 			return (Hords(func, l, n));
 		}
-		x2 = x1 - f(x1, func) / D(func, x1);
+		x2 = x1 - f(x1, func) / D_cen(func, x1);
 	} while (fabs(x1 - x2) > EPS);
 	return (x2);
 }
