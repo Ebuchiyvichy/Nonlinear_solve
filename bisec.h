@@ -33,24 +33,28 @@ local	localisation_func(int func, int nbrh)
 double	Bisection(int func, local l, int n)
 {
 	double	x, a, b;
+	int		i = 1;
 
 	a = l.intervals[n][0];
 	b = l.intervals[n][1];
 	x = (a + b) / 2;
 	while (fabs(b - a) > EPS)
 	{
+		i++;
 		if (f(a, func) * f(x, func) <= 0)
 			b = x;
 		else
 			a = x;
 		x = (a + b) / 2;
 	}
+	std::cout << "Nbr of iteration in bisection: " << i << std::endl;
 	return x;
 }
 
 double	Hords(int func, local l, int n)
 {
 	double	x1, x2, a, b;
+	int		i = 1;
 
 	a = l.intervals[n][0];
 	b = l.intervals[n][1];
@@ -58,9 +62,11 @@ double	Hords(int func, local l, int n)
 	x1 = (f(a, func) * b - f(b, func) * a) / (f(a, func) - f(b, func));
 	do
 	{
+		i++;
 		x2 = x1;
 		x1 = x2 - f(x2, func)*(b - x2) / (f(b, func) - f(x2, func));
 	} while (fabs(x2 - x1) > EPS);
+	std::cout << "Nbr of iteration in hords: " << i << std::endl;
 	return (x1);
 }
 
@@ -77,6 +83,7 @@ double	D_cen(int func, double x)
 double	Newton(int func, local l, int n)
 {
 	double	x1, x2, a, b;
+	int		i = 1;
 
 	a = l.intervals[n][0];
 	b = l.intervals[n][1];
@@ -84,6 +91,7 @@ double	Newton(int func, local l, int n)
 	x2 = (f(a, func) * b - f(b, func) * a) / (f(a, func) - f(b, func));
 	do
 	{
+		i++;
 		x1 = x2;
 		if (D_cen(func, x1) < EPS)
 		{
@@ -92,5 +100,6 @@ double	Newton(int func, local l, int n)
 		}
 		x2 = x1 - f(x1, func) / D_cen(func, x1);
 	} while (fabs(x1 - x2) > EPS);
+	std::cout << "Nbr of iteration in Newton: " << i << std::endl;
 	return (x2);
 }

@@ -52,9 +52,6 @@ int	main()
 		std::vector<double>	y(NBR);
 		x[0] = 5;
 		x[1] = 4;
-	/*	J = Jacoby_matr(TEST, x);
-		std::cout << "Matrix Jacoby:" << std::endl;
-		J.print();*/
 		y = Newton(TEST, x);
 		for (int i = 0; i < NBR; i++)
 			std::cout << y[i] << std::endl;
