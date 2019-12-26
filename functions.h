@@ -5,9 +5,12 @@
 #include "MatrixClass.h"
 
 double			EPS = 10.e-6;
-static int		HBISEC = 1;
+static int		HBISEC = 7;
 int				TEST = -2;
-int	const		NBR = 2;
+int	const		NBR = 2;	
+int const		N = 300;	//количество разбиений для бассейна Ньютона
+static int	iter;
+
 
 typedef struct local
 {

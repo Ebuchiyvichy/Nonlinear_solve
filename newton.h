@@ -78,17 +78,3 @@ std::vector<double>	Newton(int func, std::vector<double> x)
 	std::cout << "Nbr of iteration in newton: " << i << std::endl;
 	return x;
 }
-/*
-double	**uniform_mesh(int test, int n, double a, double b)
-{
-	double	**mesh = new double*[n];
-
-	for (int i = 0; i <= n; i++)
-		mesh[i] = new double[2];
-	for (int i = 0; i <= n; i++)
-	{
-		mesh[i][0] = a + i * (b - a) / n;
-		mesh[i][1] = f(mesh[i][0], test);
-	}
-	return (mesh);
-}*/
